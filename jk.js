@@ -1,0 +1,11 @@
+const app = express()
+const bodyp=require("body-parser")
+app.use(bodyp.urlencoded({extended: false}))
+const adminroutin=require("./routes/admin")
+const shoproutin=require("./routes/shop")
+app.use(adminroutin)
+app.use(shoproutin)
+app.use((req,res,next)=>{
+    res.status(404).send(`<h1>Page not found</h1>`)
+})
+app.listen(4000)
